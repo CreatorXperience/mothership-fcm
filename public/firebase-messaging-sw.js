@@ -1,5 +1,5 @@
 self.addEventListener("push", async () => {
-    const { getMessaging, onBackgroundMessage } = await import("firebase/messaging/sw");
+    const { getMessaging, onBackgroundMessage } = await require("firebase/messaging/sw");
   
     const messaging = getMessaging();
     
