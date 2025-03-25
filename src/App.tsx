@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { getToken, MessagePayload, onMessage } from "firebase/messaging";
+import { getToken, MessagePayload } from "firebase/messaging";
 import { messaging } from "./firebase/firebase.setup";
 import { onBackgroundMessage } from "firebase/messaging/sw";
 
