@@ -12,11 +12,12 @@ function App() {
     requestPermission();
 
     getToken(messaging, { vapidKey: import.meta.env.VITE_VAPID_KEY })
-      .then((currentToken) => {
+      .then(async (currentToken) => {
         if (currentToken) {
           // Send the token to your server and update the UI if necessary
           // ...
           console.log(currentToken);
+          await window.navigator.clipboard.writeText(currentToken);
         } else {
           // Show permission request UI
           console.log(
