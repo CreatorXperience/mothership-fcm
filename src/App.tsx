@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { getToken, MessagePayload, onMessage } from "firebase/messaging";
 import { messaging } from "./firebase/firebase.setup";
+import { onBackgroundMessage } from "firebase/messaging/sw";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,8 +33,12 @@ function App() {
       });
   }, []);
 
-  onMessage(messaging, (payload: MessagePayload) => {
+  onBackgroundMessage(messaging, (payload: MessagePayload) => {
     console.log("message recieved", payload);
+    const me = self as any;
+    me.registration.showNotification(payload.data?.title, {
+      body: payload.data?.body,
+    });
   });
 
   function requestPermission() {
